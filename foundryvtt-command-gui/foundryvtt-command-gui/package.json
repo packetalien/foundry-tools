@@ -1,0 +1,39 @@
+{
+  "name": "foundryvtt-command-gui",
+  "version": "0.1.0",
+  "description": "A simple GUI to send commands to Foundry VTT via WebSocket.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder"
+  },
+  "author": "Electron GUI Developer",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^36.5.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.example.foundryvttcommandgui",
+    "productName": "FoundryVTT Command GUI",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.png"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "preload.js",
+      "renderer.js",
+      "styles.css",
+      "node_modules/**/*"
+    ]
+  }
+}
