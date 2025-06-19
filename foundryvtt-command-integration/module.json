@@ -1,0 +1,28 @@
+{
+  "name": "command-integration",
+  "title": "Command Integration Tool",
+  "description": "A module to facilitate sending commands to Foundry VTT via its API.",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Jules",
+      "email": "",
+      "url": ""
+    }
+  ],
+  "compatibility": {
+    "minimum": "10",
+    "verified": "11"
+  },
+  "scripts": [
+    "scripts/main.js"
+  ],
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "socket": true,
+  "url": "",
+  "manifest": "",
+  "download": "",
+  "license": "MIT"
+}
