@@ -68,13 +68,25 @@ async function sendFoundryChatMessage(messageContent, options = {}) {
 // --- CENTRAL COMMAND HANDLER ---
 /**
  * Executes a structured command object.
- * This function acts as a central dispatcher for various actions like executing macros or sending messages.
+ * The commandObject should have an 'action' property defining what to do.
+ * Supported actions:
+ *  - 'executeMacro': Requires 'target' (macro name/ID).
+ *  - 'sendMessage': Requires 'message' (string) and optional 'options' (object).
+ *  - 'ping': No other parameters required. Logs a ping and sends a confirmation chat message.
  * @param {object} commandObject - The command object.
- * @param {string} commandObject.action - The action to perform (e.g., "executeMacro", "sendMessage").
+ * @param {string} commandObject.action - The action to perform (e.g., "executeMacro", "sendMessage", "ping").
  * @param {string} [commandObject.target] - The target for the action (e.g., macro name/ID for "executeMacro").
  * @param {string} [commandObject.message] - The message content for "sendMessage".
  * @param {object} [commandObject.options] - Additional options for the action (e.g., chat message options).
+ * @param {*} [commandObject.payload] - Optional payload for actions like 'ping'.
  * @returns {Promise<boolean>} True if the command was recognized and attempted successfully, false otherwise.
+ * @example
+ * // To run a macro
+ * executeCommand({ action: 'executeMacro', target: 'MyMacroName' });
+ * // To send a chat message
+ * executeCommand({ action: 'sendMessage', message: 'Hello!', options: { type: CONST.CHAT_MESSAGE_TYPES.OOC } });
+ * // To ping the module
+ * executeCommand({ action: 'ping', payload: 'Optional payload from client' });
  */
 async function executeCommand(commandObject) {
   if (!commandObject || typeof commandObject !== 'object' || !commandObject.action) {
@@ -98,6 +110,16 @@ async function executeCommand(commandObject) {
         return false;
       }
       return await sendFoundryChatMessage(commandObject.message, commandObject.options || {});
+
+    case 'ping': // New action
+      console.log('Command Integration | executeCommand: Received ping.', commandObject.payload ? `Payload: ${JSON.stringify(commandObject.payload)}` : '');
+      // For now, send a general chat message as acknowledgement.
+      // A true "pong" back to the specific client would require more complex client tracking.
+      await sendFoundryChatMessage('Ping acknowledged by Command Integration module!', {
+        speaker: ChatMessage.getSpeaker({ alias: 'Command Integration Module' }),
+        type: CONST.CHAT_MESSAGE_TYPES.OOC
+      });
+      return true; // Indicate ping was processed
 
     // Example for future expansion:
     // case 'updateActor':

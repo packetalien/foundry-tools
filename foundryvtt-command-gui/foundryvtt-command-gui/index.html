@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Foundry VTT Command GUI</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Foundry VTT Command GUI</h1>
+
+        <div class="connection-area section">
+            <h2>Connection</h2>
+            <div class="form-group">
+                <label for="wsAddress">WebSocket Address:</label>
+                <input type="text" id="wsAddress" value="ws://localhost:30000">
+            </div>
+            <button id="connectButton">Connect</button>
+            <button id="disconnectButton" disabled>Disconnect</button>
+            <div class="status-indicator">Status: <span id="statusText">Disconnected</span></div>
+        </div>
+
+        <div class="command-area section">
+            <h2>Commands</h2>
+            <button id="sendTestCommandButton" disabled>Send Test Command</button>
+        </div>
+
+        <div class="log-area section">
+            <h2>Log</h2>
+            <div id="logOutput" class="log-output-display">
+                <p>GUI actions and responses will appear here...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./renderer.js"></script>
+</body>
+</html>

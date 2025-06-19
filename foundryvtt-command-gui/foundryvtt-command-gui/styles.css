@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c3e50; /* Darker background */
+    color: #ecf0f1; /* Lighter text */
+    font-size: 14px;
+}
+
+.container {
+    padding: 20px;
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: #34495e; /* Slightly lighter container background */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+    text-align: center;
+    color: #1abc9c; /* Accent color */
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #1abc9c;
+    border-bottom: 1px solid #16a085;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.section {
+    background-color: #46627f; /* Section background */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3) inset;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"] {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    border: 1px solid #2c3e50;
+    border-radius: 4px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+button {
+    background-color: #1abc9c; /* Accent color for buttons */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #16a085; /* Darker shade on hover */
+}
+
+button:disabled {
+    background-color: #95a5a6; /* Muted color for disabled buttons */
+    cursor: not-allowed;
+}
+
+.status-indicator {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #2c3e50; /* Dark background for status */
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+#statusText.connected {
+    color: #2ecc71; /* Green for connected */
+}
+
+#statusText.error {
+    color: #e74c3c; /* Red for error */
+}
+
+#statusText.disconnected {
+    color: #f39c12; /* Orange for disconnected */
+}
+
+.log-output-display {
+    background-color: #2c3e50; /* Dark background for log */
+    min-height: 80px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #46627f;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.log-output-display p {
+    margin: 0 0 5px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    word-break: break-all;
+}
+
+.log-output-display p:last-child {
+    margin-bottom: 0;
+}
